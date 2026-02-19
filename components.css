@@ -1,0 +1,57 @@
+/* ═══════════════════════════════════════════════════════════════════
+   components.css – Misc component polish
+═══════════════════════════════════════════════════════════════════ */
+
+/* Ripple hover helper */
+.ripple { position: relative; overflow: hidden; }
+.ripple::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  opacity: 0;
+  border-radius: inherit;
+  transition: opacity .2s;
+  pointer-events: none;
+}
+.ripple:hover::after  { opacity: .06; }
+.ripple:active::after { opacity: .13; }
+
+/* Notification toast */
+.toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.toast {
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  background: var(--surf2);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  color: var(--text);
+  animation: fadeIn .25s ease;
+  max-width: 300px;
+}
+.toast-success { border-left: 3px solid #10b981; }
+.toast-error   { border-left: 3px solid #f43f5e; }
+
+/* Week/Day empty slot hover ring */
+.week-hour-cell:hover,
+.day-hour-body:hover {
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+/* Month cell selected ring */
+.month-cell--selected {
+  box-shadow: inset 0 0 0 2px var(--primary);
+}
+
+/* Scrollbar colored in primary on hover */
+*:hover::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--primary) 30%, transparent); }
