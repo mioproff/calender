@@ -95,6 +95,11 @@
       if (val) { Calendar.goDate(new Date(val + 'T00:00:00')); _closeModal('modal-goto'); }
     });
     $('btn-add').addEventListener('click', () => _openAddModal({ date: _todayStr() }));
+    $('btn-refresh').addEventListener('click', async () => {
+  await Events.load();
+  _refresh();
+  Notifications.toast('Kalender aktualisiert ✓', 'success');
+});
     $('btn-settings').addEventListener('click', () => _openModal('modal-settings'));
     document.querySelectorAll('.view-btn').forEach(btn =>
       btn.addEventListener('click', () => Calendar.setView(btn.dataset.view))
